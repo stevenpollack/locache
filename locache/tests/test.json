@@ -1,0 +1,389 @@
+[
+  {
+    "__comment": "Berlin, Germany",
+    "geocode": {
+      "address_components": [
+        {
+          "types": [
+            "locality",
+            "political"
+          ],
+          "short_name": "Berlin",
+          "long_name": "Berlin"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "short_name": "Berlin",
+          "long_name": "Berlin"
+        },
+        {
+          "types": [
+            "country",
+            "political"
+          ],
+          "short_name": "DE",
+          "long_name": "Germany"
+        }
+      ],
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "types": [
+        "locality",
+        "political"
+      ],
+      "geometry": {
+        "viewport": {
+          "northeast": {
+            "lat": 52.6754542,
+            "lng": 13.7611176
+          },
+          "southwest": {
+            "lat": 52.33962959999999,
+            "lng": 13.0891553
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 52.6754542,
+            "lng": 13.7611176
+          },
+          "southwest": {
+            "lat": 52.33962959999999,
+            "lng": 13.0891553
+          }
+        },
+        "location": {
+          "lat": 52.52000659999999,
+          "lng": 13.404954
+        },
+        "location_type": "APPROXIMATE"
+      },
+      "formatted_address": "Berlin, Germany"
+    },
+    "timezone": {
+      "timeZoneId": "Europe/Berlin",
+      "rawOffset": 3600,
+      "status": "OK",
+      "timeZoneName": "Central European Summer Time",
+      "dstOffset": 3600
+    }
+  },
+  {
+    "__comment": "Berlin, CT, USA",
+    "geocode": {
+      "address_components": [
+        {
+          "types": [
+            "locality",
+            "political"
+          ],
+          "short_name": "Berlin",
+          "long_name": "Berlin"
+        },
+        {
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "short_name": "Hartford County",
+          "long_name": "Hartford County"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "short_name": "CT",
+          "long_name": "Connecticut"
+        },
+        {
+          "types": [
+            "country",
+            "political"
+          ],
+          "short_name": "US",
+          "long_name": "United States"
+        }
+      ],
+      "place_id": "ChIJTzAUu0i054kRAznGlquL7Zw",
+      "types": [
+        "locality",
+        "political"
+      ],
+      "geometry": {
+        "viewport": {
+          "northeast": {
+            "lat": 41.652699,
+            "lng": -72.711213
+          },
+          "southwest": {
+            "lat": 41.5541968,
+            "lng": -72.84024409999999
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 41.652699,
+            "lng": -72.711213
+          },
+          "southwest": {
+            "lat": 41.5541968,
+            "lng": -72.84024409999999
+          }
+        },
+        "location": {
+          "lat": 41.621488,
+          "lng": -72.7456519
+        },
+        "location_type": "APPROXIMATE"
+      },
+      "formatted_address": "Berlin, CT, USA"
+    },
+    "timezone": {
+      "timeZoneId": "America/New_York",
+      "rawOffset": -18000,
+      "status": "OK",
+      "timeZoneName": "Eastern Daylight Time",
+      "dstOffset": 3600
+    }
+  },
+  {
+    "__comment": "Moscow, Russia",
+    "geocode": {
+      "address_components": [
+        {
+          "types": [
+            "locality",
+            "political"
+          ],
+          "short_name": "Moscow",
+          "long_name": "Moscow"
+        },
+        {
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "short_name": "g. Moskva",
+          "long_name": "gorod Moskva"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "short_name": "Moscow",
+          "long_name": "Moscow"
+        },
+        {
+          "types": [
+            "country",
+            "political"
+          ],
+          "short_name": "RU",
+          "long_name": "Russia"
+        }
+      ],
+      "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0",
+      "types": [
+        "locality",
+        "political"
+      ],
+      "geometry": {
+        "viewport": {
+          "northeast": {
+            "lat": 56.009657,
+            "lng": 37.9456611
+          },
+          "southwest": {
+            "lat": 55.48992699999999,
+            "lng": 37.3193288
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 56.009657,
+            "lng": 37.9456611
+          },
+          "southwest": {
+            "lat": 55.48992699999999,
+            "lng": 37.3193288
+          }
+        },
+        "location": {
+          "lat": 55.755826,
+          "lng": 37.6173
+        },
+        "location_type": "APPROXIMATE"
+      },
+      "formatted_address": "Moscow, Russia"
+    },
+    "timezone": {
+      "timeZoneId": "Europe/Moscow",
+      "rawOffset": 10800,
+      "status": "OK",
+      "timeZoneName": "Moscow Standard Time",
+      "dstOffset": 0
+    }
+  },
+  {
+    "__comment": "London, England",
+    "geocode": {
+      "address_components": [
+        {
+          "types": [
+            "locality",
+            "political"
+          ],
+          "short_name": "London",
+          "long_name": "London"
+        },
+        {
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "short_name": "Greater London",
+          "long_name": "Greater London"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "short_name": "England",
+          "long_name": "England"
+        },
+        {
+          "types": [
+            "country",
+            "political"
+          ],
+          "short_name": "GB",
+          "long_name": "United Kingdom"
+        }
+      ],
+      "place_id": "ChIJdd4hrwug2EcRmSrV3Vo6llI",
+      "types": [
+        "locality",
+        "political"
+      ],
+      "geometry": {
+        "viewport": {
+          "northeast": {
+            "lat": 51.6723432,
+            "lng": 0.148271
+          },
+          "southwest": {
+            "lat": 51.38494009999999,
+            "lng": -0.3514683
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 51.6723432,
+            "lng": 0.148271
+          },
+          "southwest": {
+            "lat": 51.38494009999999,
+            "lng": -0.3514683
+          }
+        },
+        "location": {
+          "lat": 51.5073509,
+          "lng": -0.1277583
+        },
+        "location_type": "APPROXIMATE"
+      },
+      "formatted_address": "London, UK"
+    },
+    "timezone": {
+      "timeZoneId": "Europe/London",
+      "rawOffset": 0,
+      "status": "OK",
+      "timeZoneName": "British Summer Time",
+      "dstOffset": 3600
+    }
+  },
+  {
+    "__comment": "Vancouver, BC, Canada",
+    "geocode": {
+      "address_components": [
+        {
+          "types": [
+            "locality",
+            "political"
+          ],
+          "short_name": "Vancouver",
+          "long_name": "Vancouver"
+        },
+        {
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ],
+          "short_name": "Greater Vancouver",
+          "long_name": "Greater Vancouver"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ],
+          "short_name": "BC",
+          "long_name": "British Columbia"
+        },
+        {
+          "types": [
+            "country",
+            "political"
+          ],
+          "short_name": "CA",
+          "long_name": "Canada"
+        }
+      ],
+      "place_id": "ChIJs0-pQ_FzhlQRi_OBm-qWkbs",
+      "types": [
+        "locality",
+        "political"
+      ],
+      "geometry": {
+        "viewport": {
+          "northeast": {
+            "lat": 49.3140764,
+            "lng": -123.023068
+          },
+          "southwest": {
+            "lat": 49.19817700000001,
+            "lng": -123.224759
+          }
+        },
+        "bounds": {
+          "northeast": {
+            "lat": 49.3140764,
+            "lng": -123.023068
+          },
+          "southwest": {
+            "lat": 49.19817700000001,
+            "lng": -123.224759
+          }
+        },
+        "location": {
+          "lat": 49.2827291,
+          "lng": -123.1207375
+        },
+        "location_type": "APPROXIMATE"
+      },
+      "formatted_address": "Vancouver, BC, Canada"
+    },
+    "timezone": {
+      "timeZoneId": "America/Vancouver",
+      "rawOffset": -28800,
+      "status": "OK",
+      "timeZoneName": "Pacific Daylight Time",
+      "dstOffset": 3600
+    }
+  }
+]
