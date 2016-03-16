@@ -31,8 +31,11 @@ class Location:
             gmaps = None
 
         if test_geocode_json is None:
-            self.google_geocode = gmaps.geocode(location)[0]
-            self.location = location
+            try:
+                self.google_geocode = gmaps.geocode(location)[0]
+                self.location = location
+            except IndexError:
+                raise AssertionError('Google maps returned no results for location: %s' % location)
         else:
             self.google_geocode = test_geocode_json
             self.location = None
@@ -68,12 +71,14 @@ class Location:
             self.tz_name = self.google_tz.get('timeZoneName')
             self.dst_offset = self.google_tz.get('dstOffset')
             self.utc_offset = self.raw_offset + self.dst_offset
+            self.utc_from_timestamp = datetime.utcfromtimestamp(timestamp)
         else:
+            self.utc_from_timestamp = datetime.utcnow()
             # infer timezone information from the local time....
             # this can lead to certain errors for ambiguously defined times
             try:
                 local_time = pytz.timezone(self.tz_id).localize(datetime.now())
-                self.utc_offset = local_time.utcoffset().total_seconds()
+                self.utc_offset = int(local_time.utcoffset().total_seconds())
                 self.dst_offset = self.utc_offset - self.raw_offset
                 self.tz_name = local_time.tzname()
             except pytz.exceptions.AmbiguousTimeError:
@@ -93,7 +98,8 @@ class Location:
             'dstOffset': self.dst_offset,
             'utcOffset': self.utc_offset,
             'timeZoneId': self.tz_id,
-            'timeZoneName': self.tz_name
+            'timeZoneName': self.tz_name,
+            'utcFromTimestamp': self.utc_from_timestamp.strftime("%Y-%m-%d %H:%M:%S UTC")
         }
 
         return json.dumps(output)
