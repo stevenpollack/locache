@@ -1,8 +1,9 @@
 Flask==0.10.1
 googlemaps==2.4.3
+gunicorn==19.4.5
 itsdangerous==0.24
 Jinja2==2.8
--e git+https://github.com/stevenpollack/locache@heroku_0.1.0#egg=locache
+-e git+https://github.com/stevenpollack/locache@196f25897f8edc4e6a00d933a8d53fb518e53721#egg=locache
 MarkupSafe==0.23
 pluggy==0.3.1
 py==1.4.31
