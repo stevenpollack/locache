@@ -2,7 +2,7 @@ Flask==0.10.1
 googlemaps==2.4.3
 itsdangerous==0.24
 Jinja2==2.8
--e git+https://git.heroku.com/locache.git@766de26a87cc043164cc32f1e7d9a60da166a409#egg=locache
+-e git+https://github.com/stevenpollack/locache@heroku_0.1.0#egg=locache
 MarkupSafe==0.23
 pluggy==0.3.1
 py==1.4.31
