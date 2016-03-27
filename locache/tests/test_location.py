@@ -1,8 +1,8 @@
-from helper_functions import get_berlin_tz, extract_relevant_tz_properties,\
-    extract_relevant_geocode_properties, check_location_properties
 from locache.location import Location
 from datetime import datetime
 import pytest, json, os
+from helper_functions import get_berlin_tz, extract_relevant_tz_properties,\
+    extract_relevant_geocode_properties, check_location_properties
 
 @pytest.fixture(scope = 'module')
 def test_json():
@@ -71,7 +71,7 @@ class TestLocation:
 
                 if get_berlin_tz() == 'CEST':
                     assert location.dst_offset == 3600
-                    assert location.utc_offset == 7600
+                    assert location.utc_offset == 7200
                     assert location.tz_name == "CEST"
                 else:
                     assert location.dst_offset == 0

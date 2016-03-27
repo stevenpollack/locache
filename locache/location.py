@@ -2,6 +2,12 @@ import os, googlemaps, warnings, pytz, json
 from datetime import datetime
 
 class Location:
+    # initialize certain properties
+    gmaps = None
+    location = None
+    city = None
+    state_or_province = None
+    country = None
 
     def __init__(self,
                  location,
@@ -28,7 +34,6 @@ class Location:
             gmaps = googlemaps.Client(key=google_api_key)
         else:
             warnings.warn("Environment variable 'GOOGLE_API_KEY' not found... gmaps object cannot be created.")
-            gmaps = None
 
         if test_geocode_json is None:
             try:
@@ -38,23 +43,28 @@ class Location:
                 raise AssertionError('Google maps returned no results for location: %s' % location)
         else:
             self.google_geocode = test_geocode_json
-            self.location = None
 
         # extract formatted address and (lat,lng)
         self.formatted_address = self.google_geocode.get('formatted_address')
 
+        # overwrite input variable 'location'
         location = self.google_geocode.get('geometry').get('location')
         self.lat = location.get('lat')
         self.lng = location.get('lng')
 
-        # extract country
+        # extract city, state/province, and country
         address_components = self.google_geocode.get('address_components')
-        country_component = list(filter(lambda x: 'country' in x.get('types'), address_components))[0]
-        self.country = country_component.get('long_name')
 
-        # extract state/province
-        state_component = list(filter(lambda x: 'administrative_area_level_1' in x.get('types'), address_components))[0]
-        self.state_or_province = state_component.get('long_name')
+        for component in address_components:
+            component_types = component.get('types')
+            if all([type in component_types for type in ['locality', 'political']]):
+                self.city = component.get('long_name')
+
+            if all([type in component_types for type in ['administrative_area_level_1', 'political']]):
+                self.state_or_province = component.get('long_name')
+
+            if all([type in component_types for type in ['country', 'political']]):
+                self.country = component.get('long_name')
 
         self.timestamp = timestamp
 
@@ -94,6 +104,7 @@ class Location:
             'lng': self.lng,
             's': self.state_or_province,
             'country': self.country,
+            'city': self.city,
             'rawOffset': self.raw_offset,
             'dstOffset': self.dst_offset,
             'utcOffset': self.utc_offset,
@@ -103,6 +114,3 @@ class Location:
         }
 
         return json.dumps(output)
-
-if __name__ == '__main__':
-    berlin = Location('Berlin Germany')
