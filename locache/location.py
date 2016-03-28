@@ -1,5 +1,5 @@
 import os, googlemaps, warnings, pytz, json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class Location:
     # initialize certain properties
@@ -113,4 +113,25 @@ class Location:
             'utcFromTimestamp': self.utc_from_timestamp.strftime("%Y-%m-%d %H:%M:%S UTC")
         }
 
+        if self.tz_id:
+            output['timeUntilTomorrow'] = time_until_tomorrow(self.tz_id)
+
         return json.dumps(output)
+
+def time_until_tomorrow(tz, utc_timestamp=None):
+    """
+    :param tz: pytz accepted tz string
+    :param utc_timestamp: seconds from 1970-01-01 00:00:00 UTC. If none,
+     the current UTC time will be used.
+    :return: seconds (integer) until 00:00:00, local time.
+    """
+    if utc_timestamp is None:
+        utc_timestamp = datetime.now(tz=pytz.timezone(tz)).timestamp()
+
+    try:
+        local_time = datetime.fromtimestamp(utc_timestamp, tz=pytz.timezone(tz))
+        tomorrow = (local_time + timedelta(days=1)).replace(hour=0, minute=0, second=0)
+        time_left = tomorrow - local_time
+        return int(time_left.total_seconds())
+    except pytz.exceptions.UnknownTimeZoneError:
+        return 'Unknown Time Zone...'
