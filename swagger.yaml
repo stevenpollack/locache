@@ -2,7 +2,8 @@ swagger: "2.0"
 info:
   version: 1.0.0
   title: locache
-  description: A simple service to provide geolocal/temporal information.
+  description: 
+    A simple service to provide geolocal/temporal information.
     Currently chains together google maps' geolocation and timezone APIs
     so you don't have to sign up for a token. This means that you really can't
     spam this service, or we both run out of free API calls and that's no fun
