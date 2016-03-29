@@ -1,10 +1,12 @@
 import os, redis
 from flask import Flask, redirect, request
 from locache.root import Endpoint
+from flask.ext.cors import CORS
 
 r = redis.from_url(os.environ.get('REDIS_URL'))
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/info')
 def info():
