@@ -1,4 +1,4 @@
-from locache.location import Location, time_until_tomorrow
+from locache.location import Location, time_until_next
 from datetime import datetime, timedelta
 import pytest, json, os, pytz
 from helper_functions import get_berlin_tz, extract_relevant_tz_properties,\
@@ -77,15 +77,22 @@ class TestLocation:
                     assert location.utc_offset == 3600
                     assert location.tz_name == "CET"
 
-def test_time_until_tomorrow():
+def test_time_until_next():
     # mock time will be 23:59:00 GMT+1
     test_tz = 'Europe/Berlin'
     utc_time = pytz.timezone(test_tz).localize(datetime(2016, 1, 1, 23, 59)).timestamp()
-    assert time_until_tomorrow(test_tz, utc_time) == 60
+    # time until 00:00:00 should be 60 seconds
+    assert time_until_next(0, 0, 0, test_tz, utc_time) == 60
+    # time until 02:00:00 should be 121 minutes
+    assert time_until_next(2, 0, 0, test_tz, utc_time) == 121*60
 
     # mock time will be 23:59:00 GMT-8
     test_tz = 'America/Vancouver'
     utc_time = pytz.timezone(test_tz).localize(datetime(2016, 1, 1, 23, 59)).timestamp()
-    assert time_until_tomorrow(test_tz, utc_time) == 60
+    # time until 00:00:00 should be 60 seconds
+    assert time_until_next(0, 0, 0, test_tz, utc_time) == 60
+    # time until 02:00:00 should be 121 minutes
+    assert time_until_next(2, 0, 0, test_tz, utc_time) == 121 * 60
+
 
 

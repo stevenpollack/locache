@@ -113,25 +113,33 @@ class Location:
             'utcFromTimestamp': self.utc_from_timestamp.strftime("%Y-%m-%d %H:%M:%S UTC")
         }
 
-        if self.tz_id:
-            output['timeUntilTomorrow'] = time_until_tomorrow(self.tz_id)
+        return output
 
-        return json.dumps(output)
-
-def time_until_tomorrow(tz, utc_timestamp=None):
+def time_until_next(hour, minute, second, tz, utc_timestamp=None):
     """
+    :param hour: integer between 0 and 23
+    :param minute: integer between 0 and 59
+    :param second: integer between 0 and 59
     :param tz: pytz accepted tz string
     :param utc_timestamp: seconds from 1970-01-01 00:00:00 UTC. If none,
      the current UTC time will be used.
-    :return: seconds (integer) until 00:00:00, local time.
+    :return: the seconds until the next instance of hour:minute:second in tz's local time
     """
     if utc_timestamp is None:
         utc_timestamp = datetime.now(tz=pytz.timezone(tz)).timestamp()
 
     try:
         local_time = datetime.fromtimestamp(utc_timestamp, tz=pytz.timezone(tz))
-        tomorrow = (local_time + timedelta(days=1)).replace(hour=0, minute=0, second=0)
-        time_left = tomorrow - local_time
+        next_time = local_time.replace(hour=hour, minute=minute, second=second)
+
+        # check to see that the next instance of hour:minute:second is ahead of
+        # local_time. If we've already passed it, we need to assume this time-point
+        # occurs 1 day after the day registered in local_time
+        if local_time > next_time:
+            next_time = next_time + timedelta(days=1)
+
+        time_left = next_time - local_time
         return int(time_left.total_seconds())
+
     except pytz.exceptions.UnknownTimeZoneError:
         return 'Unknown Time Zone...'
