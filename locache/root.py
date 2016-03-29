@@ -54,8 +54,8 @@ class Endpoint:
             warnings.warn("Retrieved result cached at key: %s" % self.cache_key)
 
             # add timeUntilTomorrow to location_json before dehydration
-            location_json = json.loads(cached_location)
-            location_json['timeUntilTomorrow'] = time_until_next(0, 0, 0, self.Location.tz_id)
+            location_json = json.loads(cached_location.decode())
+            location_json['timeUntilTomorrow'] = time_until_next(0, 0, 0, location_json['timeZoneId'])
             self.response = Response(json.dumps(location_json), status=200, mimetype=self.mimetype)
             return self.response
         else:
